@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Certifications() {
   const certificates = [
@@ -31,7 +32,7 @@ function Certifications() {
 
   const [current, setCurrent] = useState(0);
 
-  // AUTO SLIDE
+  /* AUTO SLIDE */
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % certificates.length);
@@ -40,12 +41,12 @@ function Certifications() {
     return () => clearInterval(interval);
   }, [certificates.length]);
 
-  // NEXT
+  /* NEXT */
   const nextCertificate = () => {
     setCurrent((prev) => (prev + 1) % certificates.length);
   };
 
-  // PREVIOUS
+  /* PREVIOUS */
   const previousCertificate = () => {
     setCurrent(
       (prev) => (prev - 1 + certificates.length) % certificates.length
@@ -56,60 +57,187 @@ function Certifications() {
 
   return (
     <section id="certifications" className="certifications-section">
-
-      {/* BACKGROUND */}
-      <div
-        className="certificate-background"
-        style={{
-          backgroundImage: `url(${certificate.image})`,
-        }}
-      ></div>
-
-      {/* OVERLAY */}
-      <div className="certificate-overlay"></div>
-
+        
       {/* HEADING */}
-      <div className="certifications-heading">
+      <motion.div
+        className="certifications-heading"
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.4,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+        }}
+      >
         <h2>
           CERTIFICATES
           <br />
           <span>I've earned.</span>
         </h2>
-      </div>
+      </motion.div>
 
       {/* CONTENT */}
       <div className="certificate-content">
 
         {/* CERTIFICATE IMAGE - LEFT */}
         <div className="certificate-main-image">
-          <a
-            href={certificate.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src={certificate.image}
-              alt={certificate.title}
-            />
-          </a>
+
+          <AnimatePresence mode="wait">
+            <motion.a
+              key={`image-${current}`}
+              href={certificate.link}
+              target="_blank"
+              rel="noreferrer"
+              initial={{
+                opacity: 0,
+                x: -80,
+                scale: 0.94,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                x: 80,
+                scale: 0.94,
+              }}
+              transition={{
+                duration: 0.65,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <motion.img
+                src={certificate.image}
+                alt={certificate.title}
+                whileHover={{
+                  scale: 1.025,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+              />
+            </motion.a>
+          </AnimatePresence>
+
         </div>
 
         {/* DETAILS + CONTROLS - RIGHT */}
         <div className="certificate-info">
 
-          {/* DETAILS */}
-          <div className="certificate-details">
-            <span className="certificate-count">
-              {String(current + 1).padStart(2, "0")} /{" "}
-              {String(certificates.length).padStart(2, "0")}
-            </span>
+          <AnimatePresence mode="wait">
 
-            <h2>{certificate.title}</h2>
-            <p>{certificate.issuer}</p>
-          </div>
+            <motion.div
+              key={`details-${current}`}
+              className="certificate-details"
+
+              initial={{
+                opacity: 0,
+                x: 50,
+              }}
+
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+
+              exit={{
+                opacity: 0,
+                x: -30,
+              }}
+
+              transition={{
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+
+              <motion.span
+                className="certificate-count"
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.1,
+                }}
+              >
+                {String(current + 1).padStart(2, "0")} /{" "}
+                {String(certificates.length).padStart(2, "0")}
+              </motion.span>
+
+              <motion.h2
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2,
+                }}
+              >
+                {certificate.title}
+              </motion.h2>
+
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.3,
+                }}
+              >
+                {certificate.issuer}
+              </motion.p>
+
+            </motion.div>
+
+          </AnimatePresence>
 
           {/* CONTROLS */}
-          <div className="certificate-controls">
+          <motion.div
+            className="certificate-controls"
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.4,
+            }}
+          >
 
             <button
               onClick={previousCertificate}
@@ -120,13 +248,17 @@ function Certifications() {
 
             {/* DOTS */}
             <div className="certificate-dots">
+
               {certificates.map((_, index) => (
+
                 <span
                   key={index}
                   className={index === current ? "active" : ""}
                   onClick={() => setCurrent(index)}
                 ></span>
+
               ))}
+
             </div>
 
             <button
@@ -136,8 +268,10 @@ function Certifications() {
               →
             </button>
 
-          </div>
+          </motion.div>
+
         </div>
+
       </div>
     </section>
   );

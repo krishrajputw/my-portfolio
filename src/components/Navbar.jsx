@@ -1,27 +1,71 @@
+
+import { motion } from "framer-motion";
+
 function Navbar() {
   return (
-    <nav className="navbar">
-      <a href="#home" className="nav-logo">
-        <img src="/logo.png" alt="Krish Rajput Logo" />
-      </a>
+    <motion.nav
+      className="navbar"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      {/* LOGO */}
+      <motion.a
+        href="#home"
+        className="nav-logo"
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 0.2,
+        }}
+      >
+        <img
+          src="/logo.png"
+          alt="Krish Rajput Logo"
+        />
+      </motion.a>
 
+      {/* NAV LINKS */}
       <div className="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        {["Home", "About", "Skills", "Projects", "Contact"].map(
+          (item, index) => (
+            <motion.a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: 0.3 + index * 0.08,
+              }}
+            >
+              {item}
+            </motion.a>
+          )
+        )}
       </div>
 
-    <a
-    href="/Krish_Resume_.pdf"
-    className="resume-btn"
-    download="Krish_Resume.pdf"
->
-    resume
-</a>
-    </nav>
+      {/* RESUME */}
+      <motion.a
+        href="/Krish_Resume_.pdf"
+        className="resume-btn"
+        download="Krish_Resume.pdf"
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 0.5,
+        }}
+      >
+        resume
+      </motion.a>
+    </motion.nav>
   );
 }
 
 export default Navbar;
+

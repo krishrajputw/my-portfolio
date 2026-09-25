@@ -1,3 +1,6 @@
+
+import { motion } from "framer-motion";
+
 function Projects() {
   const projects = [
     {
@@ -25,36 +28,177 @@ function Projects() {
 
   return (
     <section className="projects" id="projects">
-      <div className="projects-header">
+
+      {/* HEADER */}
+      <motion.div
+        className="projects-header"
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.4,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+        }}
+      >
         <p>SELECTED WORK</p>
         <h2>Projects</h2>
-      </div>
+      </motion.div>
 
-      {projects.map((project) => (
-        <a
+      {/* PROJECTS */}
+      {projects.map((project, index) => (
+
+        <motion.a
           href={project.link}
           target="_blank"
           rel="noreferrer"
           className="project-row"
           key={project.no}
+
+          initial={{
+            opacity: 0,
+            x: -80,
+          }}
+
+          whileInView={{
+            opacity: 1,
+            x: 0,
+          }}
+
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+
+          transition={{
+            duration: 0.8,
+            delay: index * 0.15,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
-          <div className="project-no">
+
+          {/* NUMBER */}
+          <motion.div
+            className="project-no"
+            initial={{
+              opacity: 0,
+              x: -20,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.15 + 0.2,
+            }}
+          >
             {project.no}
-          </div>
+          </motion.div>
 
+          {/* INFO */}
           <div className="project-info">
-            <h3>{project.title}</h3>
-            <p>{project.subtitle}</p>
-            <span>{project.stack}</span>
+
+            <motion.h3
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.15 + 0.25,
+              }}
+            >
+              {project.title}
+            </motion.h3>
+
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.15 + 0.35,
+              }}
+            >
+              {project.subtitle}
+            </motion.p>
+
+            <motion.span
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.15 + 0.45,
+              }}
+            >
+              {project.stack}
+            </motion.span>
+
           </div>
 
-          <div className="project-arrow">
+          {/* ARROW */}
+          <motion.div
+            className="project-arrow"
+            initial={{
+              opacity: 0,
+              x: -15,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.15 + 0.5,
+            }}
+          >
             ↗
-          </div>
-        </a>
+          </motion.div>
+
+        </motion.a>
+
       ))}
+
     </section>
   );
 }
 
 export default Projects;
+

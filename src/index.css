@@ -3345,38 +3345,14 @@ a {
 
 .hero-icons {
   position: absolute;
-
   inset: 0;
-
-  z-index: 5;
-
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  z-index: 5;
 }
 
-.hero-icon {
-  position: absolute;
-
-  width: 62px;
-  height: 62px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid var(--border);
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.04);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  box-shadow: none;
-
-  font-size: 32px;
-
-  animation: iconFloat 4s ease-in-out infinite;
-}
+.hero-icon { position: absolute; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; font-size: 32px; border-radius: 14px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), inset 0 0 15px rgba(255, 255, 255, 0.03); transform-origin: center bottom; will-change: transform, opacity; transition: box-shadow 0.3s ease, background 0.3s ease; }
 
 .hero-icon svg {
   width: 32px;
@@ -3385,98 +3361,81 @@ a {
   filter: none;
 }
 
+/* ========================================= ICON HOVER ========================================= */ .hero-icon:hover { background: rgba(255, 255, 255, 0.11); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.05); }
 
 /* =========================
    ICON COLORS
 ========================= */
 
+
+/* HTML */
 .html-icon {
-  top: 8%;
-  left: 5%;
-
-  color: #e34f26;
-
-  animation-delay: 0s;
-}
-
-.css-icon {
-  top: 20%;
-  right: 5%;
-
-  color: #1572b6;
-
-  animation-delay: 0.4s;
-}
-
-.js-icon {
-  top: 43%;
-  left: 0%;
-
-  color: #f7df1e;
-
-  animation-delay: 0.8s;
-}
-
-.python-icon {
-  bottom: 17%;
-  right: 4%;
-
-  color: #3776ab;
-
-  animation-delay: 1.2s;
-}
-
-.react-icon {
-  top: 5%;
-  right: 28%;
-
-  color: #61dafb;
-
-  animation-delay: 1.6s;
-}
-
-.node-icon {
+  left: 8%;
   bottom: 12%;
-  left: 5%;
-
-  color: #68a063;
-
-  animation-delay: 2s;
+  color: #e34f26;
 }
 
-.mongo-icon {
-  top: 55%;
-  right: 0%;
-
-  color: #47a248;
-
-  animation-delay: 2.4s;
+/* CSS */
+.css-icon {
+  left: 22%;
+  bottom: 8%;
+  color: #1572b6;
 }
 
-.git-icon {
+/* JavaScript */
+.js-icon {
+  left: 38%;
+  bottom: 10%;
+  color: #f7df1e;
+}
+
+/* Python */
+.python-icon {
+  right: 25%;
+  bottom: 7%;
+  color: #3776ab;
+}
+
+/* React */
+.react-icon {
+  right: 10%;
+  bottom: 12%;
+  color: #61dafb;
+}
+
+/* Node */
+.node-icon {
+  left: 15%;
   bottom: 3%;
-  left: 30%;
+  color: #68a063;
+}
 
+/* MongoDB */
+.mongo-icon {
+  left: 50%;
+  bottom: 2%;
+  color: #47a248;
+}
+
+/* Git */
+.git-icon {
+  right: 15%;
+  bottom: 3%;
   color: #f05032;
-
-  animation-delay: 2.8s;
 }
 
+/* GitHub */
 .github-icon {
-  top: 28%;
-  left: 25%;
-
+  right: 35%;
+  bottom: 5%;
   color: #ffffff;
-
-  animation-delay: 3.2s;
 }
-
 
 /* =========================
    ICON ANIMATION
 ========================= */
 
-@keyframes iconFloat {
+/* @keyframes iconFloat {
   0% {
     transform: translateY(0) rotate(0deg);
   }
@@ -3488,7 +3447,7 @@ a {
   100% {
     transform: translateY(0) rotate(0deg);
   }
-}
+} */
 
 
 /* =========================
@@ -3822,5 +3781,336 @@ a {
 
 
 
+/* yha se naya css */
 
+
+/* =========================================
+   PHYSICS TECHNOLOGY ICONS
+========================================= */
+
+.physics-icons-container {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 6;
+}
+
+
+/* =========================================
+   INDIVIDUAL PHYSICS ICON
+========================================= */
+
+.physics-icon {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 32px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  border-radius: 14px;
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    inset 0 0 15px rgba(255, 255, 255, 0.04);
+
+  will-change:
+    transform,
+    left,
+    top;
+}
+
+
+/* =========================================
+   FLOOR
+========================================= */
+
+.physics-floor {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 8px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 -5px 25px rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .physics-icon {
+    font-size: 26px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .physics-icon {
+    font-size: 23px;
+  }
+
+}
+
+
+
+
+
+/* ========================================
+   DEVELOPMENT JOURNEY
+======================================== */
+
+.journey {
+  position: relative;
+}
+
+/* Timeline line */
+
+.journey-progress {
+  transform-origin: top center;
+}
+
+/* Journey item */
+
+.journey-item {
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.journey-item:hover {
+  transform: translateX(8px);
+}
+
+/* Dot */
+
+.journey-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+}
+
+.journey-dot span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+
+  animation: journeyPulse 2s infinite;
+}
+
+.journey-item:hover .journey-dot {
+  transform: scale(1.4);
+}
+
+@keyframes journeyPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Number */
+
+.journey-number {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.journey-item:hover .journey-number {
+  color: #ffffff;
+}
+
+/* Heading */
+
+.journey-content h3 {
+  transition:
+    letter-spacing 0.4s ease,
+    transform 0.4s ease;
+}
+
+.journey-item:hover .journey-content h3 {
+  letter-spacing: 3px;
+}
+
+/* Content */
+
+.journey-content {
+  transition: transform 0.4s ease;
+}
+
+.journey-item:hover .journey-content {
+  transform: translateX(4px);
+}
+
+/* Description */
+
+.journey-content p {
+  transition: opacity 0.3s ease;
+}
+
+.journey-item:hover .journey-content p {
+  opacity: 0.85;
+}
+
+
+
+/* ========================================
+   SKILLS WALL ANIMATION
+======================================== */
+
+.tech-logo {
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Icon */
+
+.tech-icon {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* Hover glow */
+
+.tech-logo:hover .tech-icon {
+  filter:
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.35))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.12));
+}
+
+/* Text */
+
+.tech-logo span {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.tech-logo:hover span {
+  color: #ffffff;
+  transform: translateY(2px);
+}
+
+/* Featured React */
+
+.tech-logo.featured {
+  transform-style: preserve-3d;
+}
+
+.tech-logo.featured .tech-icon {
+  filter:
+    drop-shadow(0 0 10px rgba(97, 218, 251, 0.25));
+}
+
+/* Wall */
+
+.skills-wall {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Background glow */
+
+.wall-glow {
+  pointer-events: none;
+  transition:
+    transform 1s ease,
+    opacity 0.5s ease;
+}
+
+.skills-wall:hover .wall-glow {
+  transform: scale(1.08);
+  opacity: 0.8;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .tech-logo:hover {
+    transform: none;
+  }
+
+  .tech-logo:hover .tech-icon {
+    filter: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.certificate-background {
+  filter: brightness(0.45) contrast(0.9);
+  opacity: 0.35;
+}
+
+.certificate-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 17, 17, 0.96) 0%,
+      rgba(17, 17, 17, 0.82) 45%,
+      rgba(17, 17, 17, 0.68) 100%
+    ),
+    rgba(17, 17, 17, 0.75);
+}
 

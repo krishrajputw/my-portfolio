@@ -1,3 +1,6 @@
+
+import { motion } from "framer-motion";
+
 import {
   FaReact,
   FaJsSquare,
@@ -47,7 +50,6 @@ function Skills() {
     { name: "JWT", icon: <SiJsonwebtokens /> },
     { name: "Vite", icon: <SiVite /> },
     { name: "Gemini API", icon: <SiGooglegemini /> },
-
     { name: "DSA", icon: <FaBrain /> },
     { name: "REST API", icon: <FaCode /> },
     { name: "OOP", icon: <FaProjectDiagram /> },
@@ -56,34 +58,117 @@ function Skills() {
 
   return (
     <section id="skills" className="skills-wall-section">
-      <div className="skills-wall-header">
+
+      {/* HEADER */}
+      <motion.div
+        className="skills-wall-header"
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.4,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+        }}
+      >
         <p>TECH STACK</p>
 
         <h2>
           Technologies I <span>work with.</span>
         </h2>
-      </div>
+      </motion.div>
 
-      <div className="skills-wall">
+      {/* SKILLS WALL */}
+      <motion.div
+        className="skills-wall"
+        initial={{
+          opacity: 0,
+          scale: 0.96,
+        }}
+        whileInView={{
+          opacity: 1,
+          scale: 1,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.2,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+        }}
+      >
+
         <div className="wall-glow"></div>
 
-        {skills.map((skill) => (
-          <div
+        {skills.map((skill, index) => (
+
+          <motion.div
             className={`tech-logo ${
               skill.featured ? "featured" : ""
             }`}
             key={skill.name}
+
+            initial={{
+              opacity: 0,
+              y: 60,
+              scale: 0.7,
+              rotate: index % 2 === 0 ? -8 : 8,
+            }}
+
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: 0,
+            }}
+
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+
+            transition={{
+              duration: 0.6,
+              delay: index * 0.06,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <div className="tech-icon">
+
+            <motion.div
+              className="tech-icon"
+              animate={{
+                y: [0, -5, 0],
+              }}
+              transition={{
+                duration: 3 + (index % 3),
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.08,
+              }}
+            >
               {skill.icon}
-            </div>
+            </motion.div>
 
             <span>{skill.name}</span>
-          </div>
+
+          </motion.div>
+
         ))}
-      </div>
+
+      </motion.div>
+
     </section>
   );
 }
 
 export default Skills;
+
