@@ -14,7 +14,7 @@ function Contact() {
     const message = formData.get("message");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("https://my-portfolio-backend-23vn.onrender.com/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
