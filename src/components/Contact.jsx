@@ -1,5 +1,5 @@
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import {
@@ -10,9 +10,15 @@ import {
 
 function Contact() {
   const form = useRef();
+  const [isSending, setIsSending] = useState(false);
 
   const sendEmail = async (e) => {
     e.preventDefault();
+
+    // Prevent multiple clicks
+    if (isSending) return;
+
+    setIsSending(true);
 
     const formData = new FormData(form.current);
 
@@ -43,11 +49,17 @@ function Contact() {
         return;
       }
 
+      // Success popup
       alert("Message sent successfully!");
+
       form.current.reset();
     } catch (error) {
       console.error("Contact form error:", error);
+
       alert("Unable to send message. Please try again.");
+    } finally {
+      // Enable button only after popup/API response
+      setIsSending(false);
     }
   };
 
@@ -87,7 +99,7 @@ function Contact() {
       {/* MAIN */}
       <div className="contact-main">
 
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <motion.div
           className="contact-left"
           initial={{ opacity: 0, x: -80 }}
@@ -144,7 +156,6 @@ function Contact() {
 
           {/* CONTACT INFO */}
           <div className="contact-info">
-
             <motion.a
               href="mailto:kshypkrish@gmail.com"
               className="contact-info-item"
@@ -175,7 +186,6 @@ function Contact() {
               <span>LOCATION</span>
               <strong>Noida, India</strong>
             </motion.div>
-
           </div>
 
           {/* SOCIALS */}
@@ -197,10 +207,7 @@ function Contact() {
               initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.4,
-                delay: 0.75,
-              }}
+              transition={{ duration: 0.4, delay: 0.75 }}
             >
               <FaGithub />
             </motion.a>
@@ -213,10 +220,7 @@ function Contact() {
               initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.4,
-                delay: 0.85,
-              }}
+              transition={{ duration: 0.4, delay: 0.85 }}
             >
               <FaLinkedin />
             </motion.a>
@@ -229,17 +233,14 @@ function Contact() {
               initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.4,
-                delay: 0.95,
-              }}
+              transition={{ duration: 0.4, delay: 0.95 }}
             >
               <FaWhatsapp />
             </motion.a>
           </motion.div>
         </motion.div>
 
-        {/* RIGHT SIDE — FORM */}
+        {/* RIGHT — FORM */}
         <motion.div
           className="contact-right"
           initial={{ opacity: 0, x: 80 }}
@@ -255,7 +256,6 @@ function Contact() {
             onSubmit={sendEmail}
             className="contact-form"
           >
-
             <motion.div
               className="form-group"
               custom={0}
@@ -313,9 +313,11 @@ function Contact() {
               ></textarea>
             </motion.div>
 
+            {/* SUBMIT BUTTON */}
             <motion.button
               type="submit"
               className="contact-submit"
+              disabled={isSending}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -324,11 +326,47 @@ function Contact() {
                 delay: 0.5,
                 ease: "easeOut",
               }}
+              animate={{
+                opacity: isSending ? 0.65 : 1,
+              }}
             >
-              <span>SEND MESSAGE</span>
-              <span>↗</span>
-            </motion.button>
+              <motion.span
+                animate={
+                  isSending
+                    ? {
+                        opacity: [1, 0.4, 1],
+                      }
+                    : {
+                        opacity: 1,
+                      }
+                }
+                transition={{
+                  duration: 1,
+                  repeat: isSending ? Infinity : 0,
+                }}
+              >
+                {isSending ? "SENDING..." : "SEND MESSAGE"}
+              </motion.span>
 
+              <motion.span
+                animate={
+                  isSending
+                    ? {
+                        rotate: 360,
+                      }
+                    : {
+                        rotate: 0,
+                      }
+                }
+                transition={{
+                  duration: 1,
+                  repeat: isSending ? Infinity : 0,
+                  ease: "linear",
+                }}
+              >
+                {isSending ? "↻" : "↗"}
+              </motion.span>
+            </motion.button>
           </form>
         </motion.div>
 
