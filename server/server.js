@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 
 app.post("/api/contact", async (req, res) => {
   try {
+    console.log("CONTACT REQUEST RECEIVED");
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
@@ -71,7 +72,7 @@ ${message}
       message: "Message sent successfully!",
     });
   } catch (error) {
-    console.error("Email sending error:", error);
+    console.error("FULL EMAIL ERROR:", error);
 
     res.status(500).json({
       success: false,
