@@ -1,4 +1,3 @@
-
 import { useRef } from "react";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
@@ -15,20 +14,17 @@ function Contact() {
     const message = formData.get("message");
 
     try {
-      const response = await fetch(
-        "https://my-portfolio-backend-23vn.onrender.com/api/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-          }),
-        }
-      );
+      const response = await fetch("https://my-portfolio-backend-23vn.onrender.com/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
+      });
 
       const data = await response.json();
 
@@ -47,6 +43,7 @@ function Contact() {
 
   return (
     <section id="contact" className="contact-section">
+
       {/* TOP */}
       <div className="contact-top">
         <span>CONTACT</span>
@@ -54,8 +51,10 @@ function Contact() {
 
       {/* MAIN */}
       <div className="contact-main">
+
         {/* LEFT SIDE */}
         <div className="contact-left">
+
           <span className="contact-small-title">
             HAVE A PROJECT IN MIND?
           </span>
@@ -75,6 +74,7 @@ function Contact() {
 
           {/* CONTACT INFO */}
           <div className="contact-info">
+
             <a
               href="mailto:kshypkrish@gmail.com"
               className="contact-info-item"
@@ -87,10 +87,12 @@ function Contact() {
               <span>LOCATION</span>
               <strong>Noida, India</strong>
             </div>
+
           </div>
 
           {/* SOCIALS */}
           <div className="contact-socials">
+
             <a
               href="https://github.com/krishrajputw"
               target="_blank"
@@ -117,16 +119,20 @@ function Contact() {
             >
               <FaWhatsapp />
             </a>
+
           </div>
+
         </div>
 
         {/* RIGHT SIDE — FORM */}
         <div className="contact-right">
+
           <form
             ref={form}
             onSubmit={sendEmail}
             className="contact-form"
           >
+
             <div className="form-group">
               <label htmlFor="name">YOUR NAME</label>
 
@@ -170,9 +176,13 @@ function Contact() {
               <span>SEND MESSAGE</span>
               <span>↗</span>
             </button>
+
           </form>
+
         </div>
+
       </div>
+
     </section>
   );
 }
