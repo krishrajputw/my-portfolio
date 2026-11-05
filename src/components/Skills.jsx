@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 import {
@@ -11,6 +10,11 @@ import {
   FaCss3Alt,
   FaGithub,
   FaGitAlt,
+  FaCode,
+  FaDatabase,
+  FaBrain,
+  FaProjectDiagram,
+  FaRobot,
 } from "react-icons/fa";
 
 import {
@@ -22,14 +26,9 @@ import {
   SiVite,
   SiJsonwebtokens,
   SiGooglegemini,
+  SiLangchain,
+  SiAnthropic,
 } from "react-icons/si";
-
-import {
-  FaCode,
-  FaDatabase,
-  FaBrain,
-  FaProjectDiagram,
-} from "react-icons/fa";
 
 function Skills() {
   const skills = [
@@ -50,6 +49,16 @@ function Skills() {
     { name: "JWT", icon: <SiJsonwebtokens /> },
     { name: "Vite", icon: <SiVite /> },
     { name: "Gemini API", icon: <SiGooglegemini /> },
+
+    // AI & GenAI
+    { name: "LLM", icon: <FaBrain /> },
+    { name: "RAG", icon: <FaProjectDiagram /> },
+    { name: "Agentic AI", icon: <FaRobot /> },
+    { name: "LangChain", icon: <SiLangchain /> },
+    { name: "Claude", icon: <SiAnthropic /> },
+    { name: "Vector Database", icon: <FaDatabase /> },
+
+    // Core Concepts
     { name: "DSA", icon: <FaBrain /> },
     { name: "REST API", icon: <FaCode /> },
     { name: "OOP", icon: <FaProjectDiagram /> },
@@ -58,26 +67,13 @@ function Skills() {
 
   return (
     <section id="skills" className="skills-wall-section">
-
       {/* HEADER */}
       <motion.div
         className="skills-wall-header"
-        initial={{
-          opacity: 0,
-          y: 40,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.4,
-        }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut",
-        }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <p>TECH STACK</p>
 
@@ -89,65 +85,39 @@ function Skills() {
       {/* SKILLS WALL */}
       <motion.div
         className="skills-wall"
-        initial={{
-          opacity: 0,
-          scale: 0.96,
-        }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.2,
-        }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut",
-        }}
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-
         <div className="wall-glow"></div>
 
         {skills.map((skill, index) => (
-
           <motion.div
-            className={`tech-logo ${
-              skill.featured ? "featured" : ""
-            }`}
+            className={`tech-logo ${skill.featured ? "featured" : ""}`}
             key={skill.name}
-
             initial={{
               opacity: 0,
               y: 60,
               scale: 0.7,
               rotate: index % 2 === 0 ? -8 : 8,
             }}
-
             whileInView={{
               opacity: 1,
               y: 0,
               scale: 1,
               rotate: 0,
             }}
-
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-
+            viewport={{ once: true, amount: 0.2 }}
             transition={{
               duration: 0.6,
               delay: index * 0.06,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-
             <motion.div
               className="tech-icon"
-              animate={{
-                y: [0, -5, 0],
-              }}
+              animate={{ y: [0, -5, 0] }}
               transition={{
                 duration: 3 + (index % 3),
                 repeat: Infinity,
@@ -159,16 +129,11 @@ function Skills() {
             </motion.div>
 
             <span>{skill.name}</span>
-
           </motion.div>
-
         ))}
-
       </motion.div>
-
     </section>
   );
 }
 
 export default Skills;
-

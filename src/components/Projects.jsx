@@ -5,20 +5,27 @@ function Projects() {
   const projects = [
     {
       no: "01",
+      title: "Agentic AI Website Builder",
+      subtitle: "AI-powered website builder that generates websites based on user input",
+      stack: "React • Node • Express • MongoDB • Monaco Editor • Sandpack",
+      link: "https://agentic-ai-website-builder-teal.vercel.app/",
+    },
+    {
+      no: "02",
       title: "Pooja Store",
       subtitle: "Real Wholesale Business E-Commerce Platform",
       stack: "React • Node • Express • MongoDB",
       link: "https://github.com/krishrajputw/pooja-store",
     },
     {
-      no: "02",
+      no: "03",
       title: "NextStep AI",
       subtitle: "AI Powered Career Guidance Platform",
       stack: "React • Express • MongoDB • Gemini API",
       link: "https://github.com/krishrajputw/NextStep-AI",
     },
     {
-      no: "03",
+      no: "04",
       title: "Developer Portfolio",
       subtitle: "Modern Interactive Portfolio Website",
       stack: "React • CSS • Animation",

@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 function About() {
@@ -76,19 +75,10 @@ function About() {
             ease: "easeOut",
           }}
         >
-          I'm Krish Rajput, a CSE graduate who enjoys turning ideas into
-          working products and creating solutions that are simple, useful,
-          and meaningful. I like understanding how things work, breaking
-          complex problems into smaller pieces, and continuously improving
-          with every project I build.
-
+          I'm Tejas, a Computer Science engineering undergrad at NIET specializing in MERN stack development and Generative AI. I enjoy turning ideas into working products and creating solutions that are secure, scalable, and intelligent.
           <br />
           <br />
-
-          I consider myself a curious, adaptable, and problem-solving-oriented
-          developer who enjoys learning new technologies and experimenting
-          with different ideas. I value clear communication, teamwork,
-          critical thinking, and taking ownership of the work I do.
+          I consider myself a curious, problem-solving-oriented developer who enjoys exploring Large Language Models (LLMs) and building robust backend APIs. I value clear communication, critical thinking, and taking complete ownership of the digital experiences I build.
         </motion.p>
 
       </div>
@@ -122,8 +112,7 @@ function About() {
             <h3>WHO I AM</h3>
 
             <p>
-              A curious developer who enjoys learning, experimenting,
-              solving problems and building things from scratch.
+              A backend-focused full-stack developer who enjoys learning new technologies, experimenting with Generative AI, and building things from scratch.
             </p>
           </motion.div>
 
@@ -141,8 +130,7 @@ function About() {
             <h3>WHAT I BUILD</h3>
 
             <p>
-              Real-world digital solutions that turn ideas into useful
-              products and meaningful experiences.
+              Scalable web applications, REST APIs, and intelligent AI-powered platforms using RAG and LangChain.
             </p>
           </motion.div>
 
@@ -160,8 +148,7 @@ function About() {
             <h3>WHAT'S NEXT</h3>
 
             <p>
-              Keep learning, experimenting and improving with every
-              project and challenge I take on.
+              Mastering advanced backend architectures, exploring deeper into Machine Learning, and improving with every challenge I take on.
             </p>
           </motion.div>
 
@@ -257,11 +244,11 @@ function About() {
               <h3>LEARN</h3>
 
               <p>
-                Programming
+                Computer Science (NIET)
                 <br />
-                Web Development
+                MERN Stack Development
                 <br />
-                Computer Science
+                Generative AI & LLMs
               </p>
 
             </div>
@@ -323,11 +310,11 @@ function About() {
               <h3>BUILD</h3>
 
               <p>
-                Pooja Store
+                Agentic AI Website Builder
                 <br />
-                NextStep AI
+                RepoMind AI
                 <br />
-                Portfolio
+                Pooja Store E-commerce
               </p>
 
             </div>
@@ -389,11 +376,11 @@ function About() {
               <h3>IMPROVE</h3>
 
               <p>
-                DSA
+                System Design
                 <br />
-                React
+                LangChain & RAG
                 <br />
-                Backend
+                Data Structures
               </p>
 
             </div>
@@ -408,4 +395,3 @@ function About() {
 }
 
 export default About;
-

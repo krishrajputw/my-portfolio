@@ -4097,20 +4097,28 @@ a {
 
 
 
+/* --- Last row icons colors --- */
 
-.certificate-background {
-  filter: brightness(0.45) contrast(0.9);
-  opacity: 0.35;
-}
+/* Vector Database */
+.tech-logo:nth-last-child(5) .tech-icon { color: #14B8A6; }
 
-.certificate-overlay {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(17, 17, 17, 0.96) 0%,
-      rgba(17, 17, 17, 0.82) 45%,
-      rgba(17, 17, 17, 0.68) 100%
-    ),
-    rgba(17, 17, 17, 0.75);
-}
+/* DSA */
+.tech-logo:nth-last-child(4) .tech-icon { color: #EC4899; }
 
+/* REST API */
+.tech-logo:nth-last-child(3) .tech-icon { color: #3B82F6; }
+
+/* OOP */
+.tech-logo:nth-last-child(2) .tech-icon { color: #8B5CF6; }
+
+/* Data Structures */
+.tech-logo:nth-last-child(1) .tech-icon { color: #F43F5E; }
+
+
+/* --- Hover par glowing effect ke liye --- */
+
+.tech-logo:nth-last-child(5):hover .tech-icon { filter: drop-shadow(0 0 12px #14B8A6); }
+.tech-logo:nth-last-child(4):hover .tech-icon { filter: drop-shadow(0 0 12px #EC4899); }
+.tech-logo:nth-last-child(3):hover .tech-icon { filter: drop-shadow(0 0 12px #3B82F6); }
+.tech-logo:nth-last-child(2):hover .tech-icon { filter: drop-shadow(0 0 12px #8B5CF6); }
+.tech-logo:nth-last-child(1):hover .tech-icon { filter: drop-shadow(0 0 12px #F43F5E); }

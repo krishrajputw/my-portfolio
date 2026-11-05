@@ -12,56 +12,62 @@ function Contact() {
   const form = useRef();
   const [isSending, setIsSending] = useState(false);
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
+const sendEmail = async (e) => {
+  e.preventDefault();
 
-    // Prevent multiple clicks
-    if (isSending) return;
+  if (isSending) return;
 
-    setIsSending(true);
+  setIsSending(true);
 
+  try {
     const formData = new FormData(form.current);
 
-    const name = formData.get("user_name");
-    const email = formData.get("user_email");
-    const message = formData.get("message");
+    const payload = {
+      name: formData.get("user_name")?.trim(),
+      email: formData.get("user_email")?.trim(),
+      message: formData.get("message")?.trim(),
+    };
+
+    if (!payload.name || !payload.email || !payload.message) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    const response = await fetch(
+      "https://my-portfolio-backend-23vn.onrender.com/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    const responseText = await response.text();
+
+    let data;
 
     try {
-      const response = await fetch(
-        "https://my-portfolio-backend-23vn.onrender.com/api/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
-
-      // Success popup
-      alert("Message sent successfully!");
-
-      form.current.reset();
-    } catch (error) {
-      console.error("Contact form error:", error);
-
-      alert("Unable to send message. Please try again.");
-    } finally {
-      // Enable button only after popup/API response
-      setIsSending(false);
+      data = JSON.parse(responseText);
+    } catch {
+      throw new Error("Server returned an invalid response.");
     }
-  };
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to send message.");
+    }
+
+    alert("Message sent successfully!");
+    form.current.reset();
+
+  } catch (error) {
+    console.error("Contact form error:", error);
+    alert(error.message || "Unable to send message. Please try again.");
+  } finally {
+    setIsSending(false);
+  }
+};
 
   const fieldVariants = {
     hidden: {

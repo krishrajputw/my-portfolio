@@ -51,9 +51,9 @@ function Navbar() {
 
       {/* RESUME */}
       <motion.a
-        href="/Krish_Resume_.pdf"
+        href="/Krish_resume.pdf"
         className="resume-btn"
-        download="Krish_Resume.pdf"
+        download="Krish_resume.pdf"
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{
